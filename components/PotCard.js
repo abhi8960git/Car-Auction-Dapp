@@ -8,6 +8,10 @@ import { PublicKey } from "@solana/web3.js";
 import { useState } from "react";
 
 const PotCard = () => {
+  const { connected } = useAppContext();
+
+  console.log(connected, "connection status");
+
   // Static Data
   const lotteryId = 3;
   const lotteryPot = 1000;
@@ -24,7 +28,7 @@ const PotCard = () => {
   // Static States:
 
   // Is Wallet connected?
-  const [connected, setConnected] = useState(false);
+  // const [connected, setConnected] = useState(false);
   // Did the connected wallet create the lottery?
   const isLotteryAuthority = true;
   // Is the master created for smart contract?
@@ -82,7 +86,7 @@ const PotCard = () => {
           </>
         ) : (
           // Wallet multibutton goes here
-          <div style={{margin:'auto'}}>
+          <div style={{ margin: "auto" }}>
             <WalletMultiButton />
           </div>
         )}

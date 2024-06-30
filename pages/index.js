@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import PotCard from "../components/PotCard";
 import Table from "../components/Table";
 import style from "../styles/Home.module.css";
-
+import { AppProvider } from "../context/context";
 import { useMemo } from "react";
 import {
   ConnectionProvider,
@@ -21,11 +21,13 @@ export default function Home() {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets}>
         <WalletModalProvider>
-          <div className={style.wrapper}>
-            <Header />
-            <PotCard />
-            <Table />
-          </div>
+          <AppProvider>
+            <div className={style.wrapper}>
+              <Header />
+              <PotCard />
+              <Table />
+            </div>
+          </AppProvider>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
